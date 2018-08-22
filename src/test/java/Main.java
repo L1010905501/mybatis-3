@@ -13,11 +13,12 @@ import java.util.List;
  * mybatis
  *
  * @author zhenxing liu
- * @create 2018-08-21 23:41
+ * @date 2018-08-21 23:41
  **/
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        //类加载器https://blog.csdn.net/briblue/article/details/54973413
         String resource = "mybatis.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -29,6 +30,8 @@ public class Main {
             for (Product product : productList) {
                 System.out.printf(product.toString());
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             sqlSession.close();
         }
